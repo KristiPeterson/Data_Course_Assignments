@@ -1,0 +1,44 @@
+Shell practice tasks:
+
+1. For each of the filenames that begin with "M" in the directory 
+"~/Desktop/Data_Course/data/data-shell/data/pdb" list the number of lines in each file.
+ls m*
+
+2. Redirect the output from the previous task to a new file named "m_lines.txt" in 
+"~/Desktop/Data_Course_YOUR_LAST_NAME/"
+ls m* > "m_lines.txt"
+
+3. For the file "animals.txt" in "~/Desktop/Data_Course/data/data-shell/data/" get an alphabetical list 
+of the unique animal types that were observed and redirect this list to "unique_animals.txt" in "~/Desktop/Data_Course_YOUR_LAST_NAME/"
+~/Desktop/Data_Course/data/data-shell/data (master)
+$ cut -d "," -f 2 animals.txt | sort | uniq
+
+4. In the directory "~/Desktop/Data_Course/data/" there is a file named "BioLog_Plate_Data.csv"
+Write a command that gives a list of the unique carbon substrates the biolog plate measured, 
+and which saves this list as "unique_C-substrates.txt" in "~/Desktop/Data_Course_YOUR_LAST_NAME/" 
+$ cut -d "," -f 5 BioLog_Plate_Data.csv | sort | uniq > unique_C-substrates.txt
+
+5. 
+~/Desktop/Data_Course/data/data-shell/data (master)
+$ wc -l *.txt  | sort -n |  tail -2 | head -1
+3080 sunspot.txt
+
+6. 
+
+$ bash Sum_All_Lines.sh >> file_sums.txt
+
+//here is my nano 
+#!/bin/bash
+
+ls */data/* > listing.txt
+
+filename="listing.txt"
+
+while IFS= read -r var
+do
+        bash ~/Desktop/Data_Course/data/data-shell/scripts/sum_lines.sh $var
+done < "$filename"
+
+
+
+
